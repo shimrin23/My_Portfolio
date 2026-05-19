@@ -54,10 +54,35 @@ export const metadata: Metadata = {
     }
 };
 
+const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    jobTitle: 'Computer Engineering Undergraduate',
+    sameAs: [siteConfig.github, siteConfig.linkedin].filter(Boolean)
+};
+
+const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
             <body className={`${displayFont.variable} ${bodyFont.variable} font-[family:var(--font-body)]`}>
+                <a
+                    href="#top"
+                    className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-foreground focus:shadow-lg"
+                >
+                    Skip to content
+                </a>
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
                 <Providers>{children}</Providers>
             </body>
         </html>

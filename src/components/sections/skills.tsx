@@ -20,8 +20,12 @@ const CATEGORIES = [
     { key: 'networking', label: 'Networking' }
 ] as const;
 
+type SkillCategoryKey = (typeof CATEGORIES)[number]['key'];
+
+const skillGroups: Record<SkillCategoryKey, readonly string[]> = skillsData;
+
 export function Skills() {
-    const [active, setActive] = React.useState<typeof CATEGORIES[number]['key']>('frontend');
+    const [active, setActive] = React.useState<SkillCategoryKey>('frontend');
 
     return (
         <motion.section id="skills" className="section-padding relative">
@@ -39,7 +43,7 @@ export function Skills() {
                                 key={c.key}
                                 size="sm"
                                 variant={active === c.key ? 'secondary' : 'outline'}
-                                onClick={() => setActive(c.key as any)}
+                                onClick={() => setActive(c.key)}
                                 className="rounded-full"
                                 aria-pressed={active === c.key}
                             >
@@ -51,7 +55,7 @@ export function Skills() {
                     <div className="mt-8 grid gap-8 lg:grid-cols-2">
                         <motion.div variants={fadeUp} className={cn('space-y-6')}>
                             {/* Left column: active category details */}
-                            <SkillCategory title={CATEGORIES.find((c) => c.key === active)!.label} skills={(skillsData as any)[active]} />
+                            <SkillCategory title={CATEGORIES.find((c) => c.key === active)?.label ?? active} skills={skillGroups[active]} />
                         </motion.div>
 
                         <motion.div variants={fadeUp} className="space-y-6">

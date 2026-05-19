@@ -4,6 +4,9 @@ import About from '@/components/sections/about';
 import Skills from '@/components/sections/skills';
 import Projects from '@/components/sections/projects';
 import Experience from '@/components/sections/experience';
+import Contact from '@/components/sections/contact';
+import GitHubStats from '@/components/sections/github-stats';
+import Footer from '@/components/layout/footer';
 
 export default function HomePage() {
     return (
@@ -16,6 +19,9 @@ export default function HomePage() {
                 <Skills />
                 <Projects />
                 <Experience />
+                <GitHubStats />
+                <Contact />
+                <Footer />
             </div>
         </main>
     );

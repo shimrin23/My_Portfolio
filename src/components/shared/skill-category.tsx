@@ -7,7 +7,7 @@ import SkillCard from './skill-card';
 import { sectionStagger, fadeUp } from '@/lib/motion';
 import { cn } from '@/lib/utils';
 
-export function SkillCategory({ title, skills }: { title: string; skills: string[] }) {
+export function SkillCategory({ title, skills }: { title: string; skills: readonly string[] }) {
     return (
         <motion.section variants={sectionStagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
             <motion.h3 variants={fadeUp} className="mb-4 text-lg font-semibold text-foreground">
