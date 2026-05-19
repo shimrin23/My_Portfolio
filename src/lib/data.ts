@@ -1,4 +1,4 @@
-export type ProjectCategory = 'ai-ml' | 'devops' | 'web' | 'cybersecurity' | 'networking';
+export type ProjectCategory = 'ai-ml' | 'devops' | 'web' | 'cybersecurity' | 'networking' | 'embedded';
 
 export interface Project {
     title: string;
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     {
         title: 'Secure Full-Stack QA Application',
         slug: 'secure-full-stack-qa-application',
-        category: 'cybersecurity',
+        category: 'web',
         description:
             'Secure full-stack app implementing JWT auth, BCrypt hashing, Selenium automation, JMeter testing, and GitHub Actions CI pipelines.',
         github: 'https://github.com/shimrin23/ToDoApp',
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     {
         title: 'HDL-Based 4-Floor Lift Controller',
         slug: 'hdl-based-4-floor-lift-controller',
-        category: 'web',
+        category: 'embedded',
         description:
             'Verilog-based FSM elevator controller with safety interlocks and RTL simulation testing.',
         github: 'https://github.com/shimrin23/HDL-Based-4-Floor-Lift-Controller',
@@ -160,43 +160,84 @@ export const skills = {
     networking: ['TCP/IP', 'Socket Programming', 'Client-Server Architecture', 'Real-Time Synchronization']
 } as const;
 
-export const experience = [
+export type ExperienceType = 'exhibition' | 'engineering' | 'devops' | 'research' | 'cybersecurity';
+
+export interface Experience {
+    title: string;
+    type: ExperienceType;
+    organization: string;
+    period: string;
+    summary: string;
+    highlights: string[];
+}
+
+export const experience: Experience[] = [
     {
-        title: 'REXTRO 2024 Exhibition Participant',
+        title: 'REXTRO 2024 Exhibition',
+        type: 'exhibition',
         organization: 'University of Ruhuna',
         period: '2024',
         summary:
-            'Presented engineering work in a public exhibition setting, translating technical detail into clear communication for diverse audiences.'
+            'Presented cybersecurity-focused educational systems and demonstrated secure engineering concepts through hands-on vulnerable application environments.',
+        highlights: [
+            'Cybersecurity demonstrations',
+            'Technical presentation',
+            'Collaborative engineering showcase'
+        ]
     },
     {
-        title: 'Software Engineering Project Builder',
-        organization: 'Academic and independent projects',
+        title: 'Real-Time Systems & Networking Engineering',
+        type: 'engineering',
+        organization: 'Software Engineering Projects',
         period: 'Ongoing',
         summary:
-            'Developed secure full-stack applications, real-time systems, and deployment workflows with a focus on maintainability and measurable outcomes.'
+            'Built concurrent client-server architectures using TCP sockets, focusing on low-latency synchronization and distributed communication reliability.',
+        highlights: [
+            'Socket programming',
+            'Sub-50ms synchronization',
+            'Concurrent architectures'
+        ]
     },
     {
-        title: 'AI/ML Research Contributor',
-        organization: 'Applied computer vision and predictive modeling work',
+        title: 'DevOps & Cloud Infrastructure Projects',
+        type: 'devops',
+        organization: 'Cloud Infrastructure',
         period: 'Ongoing',
         summary:
-            'Explored practical machine learning pipelines spanning object detection, tracking, and regression-based prediction models.'
+            'Provisioned scalable AWS infrastructure using Terraform and automated CI/CD workflows using Jenkins and GitHub Actions.',
+        highlights: [
+            'Terraform infrastructure',
+            'Dockerized deployments',
+            'CI/CD pipelines'
+        ]
     },
     {
-        title: 'DevOps & Cloud Practitioner',
-        organization: 'Infrastructure and CI/CD experiments',
+        title: 'AI/ML Research & Computer Vision',
+        type: 'research',
+        organization: 'AI/ML Research',
         period: 'Ongoing',
         summary:
-            'Applied Docker, Terraform, AWS, Jenkins, and GitHub Actions to create repeatable delivery and deployment pipelines.'
+            'Developed edge-based AI systems using YOLOv8, DeepSORT, and machine learning pipelines for real-time analytics and prediction systems.',
+        highlights: [
+            'Computer vision pipelines',
+            'Edge AI processing',
+            'ML model optimization'
+        ]
     },
     {
-        title: 'Cybersecurity Training Builder',
-        organization: 'Security lab projects',
+        title: 'Secure Full-Stack Application Engineering',
+        type: 'cybersecurity',
+        organization: 'Cybersecurity & Full-Stack',
         period: 'Ongoing',
         summary:
-            'Constructed security-focused training environments for authentication, access control, and web vulnerability testing.'
+            'Built secure web systems implementing JWT authentication, RBAC authorization, BCrypt hashing, automated testing, and secure API architectures.',
+        highlights: [
+            'JWT authentication',
+            'RBAC authorization',
+            'Security-focused engineering'
+        ]
     }
-] as const;
+];
 
 export const certifications = [] as const;
 
